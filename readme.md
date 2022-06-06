@@ -28,4 +28,4 @@ const VIDEO = true ? 'record': 'not record';
 
 # Base reference project
 
-<a href="<https://github.com/Tallyb/cucumber-playwright"> Tally Barak</a>
+<a href="https://github.com/Tallyb/cucumber-playwright">Tally Barak</a>
