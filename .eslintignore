@@ -5,5 +5,5 @@ coverage
 dist
 node_modules
 package
-reports
+
 playwright.config.ts
