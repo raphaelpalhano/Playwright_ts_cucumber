@@ -13,10 +13,14 @@ import {
 } from '@playwright/test';
 import { ITestCaseHookParameter } from '@cucumber/cucumber/lib/support_code_library_builder/types';
 import { ensureDir } from 'fs-extra';
-import axios from 'axios';
 let browser: ChromiumBrowser | FirefoxBrowser | WebKitBrowser;
 const tracesDir = 'traces';
 const VIDEO = true;
+const options = {
+  args: ['--start-maximized'],
+  acceptDownloads: true,
+  recordVideo: VIDEO ? { dir: 'reports/videos' } : undefined,
+};
 
 declare global {
   // eslint-disable-next-line no-var
@@ -53,16 +57,13 @@ Before(async function (this: ICustomWorld, { pickle }: ITestCaseHookParameter) {
   this.startTime = new Date();
   this.testName = pickle.name.replace(/\W/g, '-');
   // customize the [browser context](https://playwright.dev/docs/next/api/class-browser#browsernewcontextoptions)
-  this.context = await browser.newContext({
-    acceptDownloads: true,
-    recordVideo: VIDEO ? { dir: 'reports/videos' } : undefined,
-  });
-  this.server = axios.create();
+  this.context = await browser.newContext(options);
+  /* this.server = axios.create();
   this.server.defaults.baseURL = config.BASE_API_URL;
   this.server.defaults.headers.post = {
     'Content-Type': 'application/json',
   };
-  this.server.interceptors.response.use((res) => res.data);
+  this.server.interceptors.response.use((res) => res.data);*/
   // use login and set authorization if needed
   // this.server.defaults.headers.common.Authorization = 'Bearer ' + token;
 

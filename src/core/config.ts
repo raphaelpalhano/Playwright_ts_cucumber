@@ -12,7 +12,6 @@ const browserOptions: LaunchOptions = {
 export const config = {
   browser: process.env.BROWSER || 'chromium',
   browserOptions,
-  args: ['--start-maximized'],
   BASE_URL: 'https://demo.playwright.dev/todomvc/',
   IMG_THRESHOLD: { threshold: 0.4 },
   BASE_API_URL: 'https://catfact.ninja/',

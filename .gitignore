@@ -10,6 +10,13 @@ yarn-error.log*
 test-results.html
 test-results.html.json
 
+
+#Report 
+
+reports/videos/*.webm
+reports/videos/*.mp4
+
+
 # Runtime data
 pids
 *.pid
